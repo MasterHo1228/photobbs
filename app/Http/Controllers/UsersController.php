@@ -11,8 +11,19 @@ class UsersController extends Controller
     {
         return view('users.create');
     }
+
     public function show(User $user)
     {
         return view('users.show',compact('user'));
+    }
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|unique:users|min:3|max:30',
+            'email' => 'required|email|unique:users|max:255',
+            'password' => 'required|confirmed|min:6'
+        ]);
+        return;
     }
 }
