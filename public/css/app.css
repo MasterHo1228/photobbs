@@ -10021,14 +10021,13 @@ h3 {
 body {
   font-size: 14px;
   font-weight: normal;
+  /* footer */
+  /* User gravatar */
 }
-
-nav.navbar.navbar-expand-lg {
+body nav.navbar.navbar-expand-lg {
   margin-bottom: 20px;
 }
-
-/* footer */
-footer {
+body footer {
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
@@ -10036,35 +10035,32 @@ footer {
   font-size: 13px;
   font-weight: bold;
 }
-footer a {
+body footer a {
   color: #555;
 }
-footer a:hover {
+body footer a:hover {
   color: #222;
 }
-footer img.brand-icon {
+body footer img.brand-icon {
   width: 17px;
   height: 17px;
 }
-
-/* User gravatar */
-section.user_info {
+body section.user_info {
   padding-bottom: 10px;
   margin-top: 20px;
   text-align: center;
 }
-section.user_info .gravatar {
+body section.user_info .gravatar {
   float: none;
   max-width: 70px;
 }
-section.user_info h1 {
+body section.user_info h1 {
   font-size: 1.4em;
   letter-spacing: -1px;
   margin-bottom: 3px;
   margin-top: 15px;
 }
-
-.gravatar {
+body .gravatar {
   float: left;
   max-width: 50px;
   border-radius: 50%;
