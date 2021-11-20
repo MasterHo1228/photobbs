@@ -6,4 +6,11 @@
     <h5 class="mt-0 mb-1">{{ $user->name }} <small> / {{ $article->created_at->diffForHumans() }}</small></h5>
     {{ $article->content }}
   </div>
+  @can('destroy', $article)
+    <form action="{{ route('articles.destroy', $article->id) }}" method="POST" onsubmit="return confirm('您确定要删除本条微博吗？');">
+      {{ csrf_field() }}
+      {{ method_field('DELETE') }}
+      <button type="submit" class="btn btn-sm btn-danger">删除</button>
+    </form>
+  @endcan
 </li>

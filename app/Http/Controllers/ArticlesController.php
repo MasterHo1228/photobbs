@@ -25,4 +25,11 @@ class ArticlesController extends Controller
         session()->flash('success', '发布成功！');
         return redirect()->back();
     }
+
+    public function destroy(Article $article){
+        $this->authorize('destroy',$article);
+        $article->delete();
+        session()->flash('success', '文章已被成功删除！');
+        return redirect()->back();
+    }
 }
