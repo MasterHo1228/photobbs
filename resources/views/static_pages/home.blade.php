@@ -6,6 +6,9 @@
         <section class="article_form">
           @include('shared._article_form')
         </section>
+        <h4>文章列表</h4>
+        <hr>
+        @include('shared._feed')
       </div>
       <aside class="col-md-4">
         <section class="user_info">
