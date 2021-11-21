@@ -61,8 +61,11 @@ class User extends Authenticatable
         return $this->hasMany(Article::class);
     }
 
+    //拉取信息流
     public function feed(){
-        return $this->articles()->orderBy('created_at', 'desc');
+        $user_ids = $this->followings->pluck('id')->toArray();
+        array_push($user_ids,$this->id);
+        return Article::whereIn('user_id',$user_ids)->with('user')->orderBy('created_at','desc');
     }
 
     //粉丝关系
