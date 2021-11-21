@@ -39,6 +39,10 @@ Route::post('password/reset',  'PasswordController@reset')->name('password.updat
 //Articles
 Route::resource('articles', 'ArticlesController', ['only' => ['store', 'destroy']]);
 
-//Following
+//Following-list
 Route::get('/users/{user}/followings', 'UsersController@followings')->name('users.followings');
 Route::get('/users/{user}/followers', 'UsersController@followers')->name('users.followers');
+
+//follow & unfollow
+Route::post('/users/followers/{user}', 'FollowersController@store')->name('followers.store');
+Route::delete('/users/followers/{user}', 'FollowersController@destroy')->name('followers.destroy');
