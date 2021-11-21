@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
         $this->call(UsersTableSeeder::class);
         $this->call(ArticlesSeeder::class);
+        $this->call(FollowersTableSeeder::class);
         Model::reguard();
     }
 }
