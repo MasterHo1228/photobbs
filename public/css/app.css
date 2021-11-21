@@ -10075,13 +10075,12 @@ body .gravatar {
   float: none;
   max-width: 100px;
 }
-
-.stats {
+.gravatar_edit .stats {
   overflow: auto;
   margin-top: 0;
   padding: 0;
 }
-.stats a {
+.gravatar_edit .stats a {
   float: left;
   padding: 0 10px;
   text-align: center;
@@ -10089,16 +10088,19 @@ body .gravatar {
   border-left: 1px solid #eee;
   color: #33383c;
 }
-.stats a:first-child {
+.gravatar_edit .stats a:first-child {
   padding-left: 0;
   border: 0;
 }
-.stats a:hover {
+.gravatar_edit .stats a:hover {
   text-decoration: none;
   color: #337ab7;
 }
-.stats strong {
+.gravatar_edit .stats strong {
   display: block;
   font-size: 1.2em;
   color: black;
+}
+.gravatar_edit .list-group .list-group-item .follow-time {
+  float: right;
 }
