@@ -16144,13 +16144,19 @@ readers do not read off random characters that represent icons */
 }
 
 /* universal */
-body {
+html {
+  /* Sticky footer styles */
+  position: relative;
+  min-height: 100%;
+}
+html body {
   font-family: Helvetica, "Noto Sans SC", Arial, sans-serif;
   font-size: 14px;
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+  /* header */
 }
-
-/* header */
-.navbar-static-top {
+html body .navbar-static-top {
   border-color: #e7e7e7;
   background-color: #fff;
   box-shadow: 0px 1px 11px 2px rgba(42, 42, 42, 0.1);
@@ -16159,19 +16165,7 @@ body {
   margin-bottom: 40px;
   margin-top: 0px;
 }
-
-/* Sticky footer styles */
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
-
-.footer {
+html .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -16179,14 +16173,22 @@ body {
   height: 60px;
   background-color: #000;
 }
-.footer .container {
+html .footer .container {
   padding-right: 15px;
   padding-left: 15px;
 }
-.footer .container p {
+html .footer .container p {
   margin: 19px 0;
   color: #c1c1c1;
 }
-.footer .container p a {
+html .footer .container p a {
   color: inherit;
+}
+
+/* User register page */
+.register-page img.captcha {
+  cursor: pointer;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 3px;
 }
