@@ -28,6 +28,7 @@ class UserRequest extends FormRequest
             'name' => 'required|between:3,25|regex:/^[A-Za-z0-9\-\_]+$/|unique:users,name,' . Auth::id(),
             'email' => 'required|email',
             'introduction' => 'max:80',
+            'avatar' => 'mimes:jpeg,bmp,png,gif',
         ];
     }
 
@@ -38,6 +39,7 @@ class UserRequest extends FormRequest
             'name.regex' => '用户名只支持英文、数字、横杠和下划线。',
             'name.between' => '用户名必须介于 3 - 25 个字符之间。',
             'name.required' => '用户名不能为空。',
+            'avatar.mimes' => '头像图片文件必须是jpeg,bmp,png,gif后缀的哦',
         ];
     }
 }
