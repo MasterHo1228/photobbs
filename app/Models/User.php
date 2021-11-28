@@ -57,4 +57,8 @@ class User extends Authenticatable implements MustVerifyEmailContract
         }
         return $value;
     }
+
+    public function topic(){
+        return $this->hasMany(Topic::class);
+    }
 }
