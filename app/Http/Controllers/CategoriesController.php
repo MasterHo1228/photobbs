@@ -10,9 +10,9 @@ class CategoriesController extends Controller
 {
     public function show(Category $category, Request $request, Topic $topic)
     {
-        $topics = $topic->withOrder($request->order)
+        $topics = $topic->with('user', 'category')   // 预加载防止 N+1 问题
                         ->where('category_id', $category->id)
-                        ->with('user', 'category')   // 预加载防止 N+1 问题
+                        ->withOrder($request->order)
                         ->paginate(20);
         return view('topics.index', compact('topics', 'category'));
     }
