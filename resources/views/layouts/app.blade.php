@@ -15,6 +15,8 @@
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:100,300,400,500,700,900" rel="stylesheet">
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
+@yield('styles')
+
 </head>
 
 <body>
@@ -35,6 +37,9 @@
 
   <!-- Scripts -->
   <script src="{{ mix('js/app.js') }}"></script>
+
+@yield('scripts')
+
 </body>
 
 </html>

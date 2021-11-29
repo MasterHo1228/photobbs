@@ -1,4 +1,9 @@
 {
-    "/js/app.js": "/js/app.js?id=d782d7a3cf2e7f53a624",
-    "/css/app.css": "/css/app.css?id=345d00adce0f1e0304c5"
+    "/js/app.js": "/js/app.js?id=fe7f8c0f7e2840394b92",
+    "/css/app.css": "/css/app.css?id=345d00adce0f1e0304c5",
+    "/js/hotkeys.min.js": "/js/hotkeys.min.js?id=4a8220e66a724af939fe",
+    "/js/module.min.js": "/js/module.min.js?id=86779df555d66c5a5fe2",
+    "/js/simditor.min.js": "/js/simditor.min.js?id=4f2cd1b5ab78f8019b00",
+    "/js/uploader.min.js": "/js/uploader.min.js?id=5bcc99ad910e74f9b85f",
+    "/css/simditor.css": "/css/simditor.css?id=69eb7767d3b20549b33f"
 }
