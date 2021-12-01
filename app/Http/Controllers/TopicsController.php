@@ -27,6 +27,10 @@ class TopicsController extends Controller
 
     public function show(Topic $topic)
     {
+        //每当有人点开话题观看的时候，话题浏览量+1
+        $topic->view_count += 1;
+        $topic->save();
+
         return view('topics.show', compact('topic'));
     }
 
