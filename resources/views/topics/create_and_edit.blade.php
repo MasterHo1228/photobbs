@@ -74,6 +74,16 @@
     $(document).ready(function() {
       var editor = new Simditor({
         textarea: $('#editor'),
+        upload:{
+          url: '{{ route('topics.upload_image') }}',
+          params: {
+            _token: '{{ csrf_token() }}'
+          },
+          fileKey: 'upload_file',
+          connectionCount: 3,
+          leaveConfirm: '图片还在上传哦，中途离开了图片不会保存下来的，确定要离开？',
+          pasteImage: true,
+        }
       });
     });
   </script>
