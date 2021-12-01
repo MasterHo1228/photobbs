@@ -46,6 +46,7 @@
             {!! $topic->body !!}
           </div>
 
+          @if ($topic->user_id == Auth::id())
           <div class="operate">
             <hr>
             <a href="{{ route('topics.edit', $topic->id) }}" class="btn btn-outline-secondary btn-sm" role="button">
@@ -55,6 +56,7 @@
               <i class="far fa-trash-alt"></i> 删除
             </a>
           </div>
+          @endif
 
         </div>
       </div>
