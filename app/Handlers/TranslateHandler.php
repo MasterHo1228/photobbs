@@ -40,7 +40,7 @@ class TranslateHandler
 
         //将获取到的结果（JSON格式的数据）通过解码获取其中的数据
         $result = json_decode($response->getBody(), true);
-        if (isset($result['trans_result'][0]['dst'])){
+        if (isset($result['trans_result'][0]['dst']) && $result['trans_result'][0]['dst'] != ''){
             return $result['trans_result'][0]['dst'];
         }else{
             //如果百度翻译没有结果，使用拼音作为后备计划
