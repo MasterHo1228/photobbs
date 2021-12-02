@@ -20,10 +20,13 @@ class TopicObserver
     }
 
     public function saved(Topic $topic){
-        //如 slug 字段无内容，即使用翻译器对 title 进行翻译
-        if ( ! $topic->slug) {
-            // 推送任务到队列
-            dispatch(new TranslateTopicSlug($topic));
+        //非命令行环境运行才执行操作
+        if (! app()->runningInConsole()){
+            //如 slug 字段无内容，即使用翻译器对 title 进行翻译
+            if ( ! $topic->slug) {
+                // 推送任务到队列
+                dispatch(new TranslateTopicSlug($topic));
+            }
         }
     }
 
