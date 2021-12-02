@@ -2,8 +2,9 @@
 
 namespace App\Observers;
 
+use Illuminate\Support\Facades\DB;
+
 use App\Models\Topic;
-use App\Handlers\SlugHandler;
 use App\Jobs\TranslateTopicSlug;
 
 // creating, created, updating, updated, saving,
@@ -24,5 +25,10 @@ class TopicObserver
             // 推送任务到队列
             dispatch(new TranslateTopicSlug($topic));
         }
+    }
+
+    public function deleted(Topic $topic)
+    {
+        DB::table('replies')->where('topic_id', $topic->id)->delete();
     }
 }
