@@ -9,6 +9,11 @@ class SlugHandler
 {
     public function generate($text)
     {
+        return Str::slug($text);
+    }
+
+    public function generate_with_translate($text)
+    {
         return Str::slug(app(TranslateHandler::class)->translate($text));
     }
 }
