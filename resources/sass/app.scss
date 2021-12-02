@@ -115,7 +115,7 @@ html {
   max-width:100%;
 }
 
-/* Topic Show Page */
+// Topic Show Page
 
 @import "topic_body";
 
@@ -130,4 +130,16 @@ html {
             line-height: 38px;
         }
     }
+}
+
+//Replies list
+.topic-reply {
+  a {
+      color: inherit;
+  }
+
+  .meta {
+      font-size: .9em;
+      color: #b3b3b3;
+  }
 }
