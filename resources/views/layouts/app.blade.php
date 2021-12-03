@@ -37,6 +37,9 @@
   </div>
 
   <!-- Scripts -->
+  @if (app()->isLocal())
+    @include('sudosu::user-selector')
+  @endif
   <script src="{{ mix('js/app.js') }}"></script>
 
 @yield('scripts')
