@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Str;
@@ -16,6 +17,14 @@ class User extends Authenticatable implements MustVerifyEmailContract
 {
     use HasApiTokens, HasFactory, HasRoles, MustVerifyEmailTrait, Notifiable;
     use Traits\ActiveUserHelper;
+    // 开启软删除
+    use SoftDeletes;
+    // 设置添加的数据
+    // 拒绝不添加的数据 使用create才有效
+    protected $guarded = [];
+
+    // 软删除标识字段
+    protected $dates = ['deleted_at'];
 
     /**
      * The attributes that are mass assignable.
