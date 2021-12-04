@@ -5,12 +5,12 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="@yield('description', '灰常低调的摄影生活杂志论坛')" />
+  <meta name="description" content="@yield('description',  setting('seo_descricption','灰常低调的摄影生活杂志论坛'))" />
 
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>@yield('title', 'Photo BBS') - 灰常低调的摄影生活杂志论坛</title>
+  <title>@yield('title', 'Photo BBS') - {{ setting('site_name', '灰常低调的摄影生活杂志论坛') }}</title>
 
   <!-- Styles -->
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:100,300,400,500,700,900" rel="stylesheet">
