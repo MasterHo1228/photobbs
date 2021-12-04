@@ -55,7 +55,7 @@ trait ActiveUserHelper
         $users = array_reverse($users, true);
 
         // 只获取我们想要的数量
-        $users = array_slice($users, 0, $this->user_number, true);
+        $users = array_slice(arraySort($this->users,'score','desc'),0,6,true);
 
         // 新建一个空集合
         $active_users = collect();

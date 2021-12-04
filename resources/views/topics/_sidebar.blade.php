@@ -1,8 +1,21 @@
 <div class="card ">
   <div class="card-body">
+    @auth
+    {{-- 如果用户已登录，显示新建话题按钮 --}}
     <a href="{{ route('topics.create') }}" class="btn btn-success btn-block" aria-label="Left Align">
-      <i class="fas fa-pencil-alt mr-2"></i>  新建帖子
+      <i class="fas fa-pencil-alt mr-2"></i>  新建话题
     </a>
+    @endauth
+
+    @guest
+    {{-- 未登录，显示登录和注册按钮 --}}
+    <a href="{{ route('login') }}" class="btn btn-primary btn-block" aria-label="Left Align">
+      登录
+    </a>
+    <a href="{{ route('register') }}" class="btn btn-success btn-block" aria-label="Left Align">
+      注册
+    </a>
+    @endguest
   </div>
 </div>
 

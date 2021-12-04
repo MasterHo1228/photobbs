@@ -54,3 +54,24 @@ function model_plural_name($model)
     // 获取子串的复数形式，例如：传参 `user` 会得到 `users`
     return Str::plural($snake_case_name);
 }
+
+/**
+ * @desc arraySort php二维数组排序 按照指定的key 对数组进行自然排序
+ * @param array $arr 将要排序的数组
+ * @param string $keys 指定排序的key
+ * @param string $type 排序类型 asc | desc
+ * @return array
+ */
+function arraySort($arr, $keys, $type = 'asc')
+{
+    $keysvalue = $new_array = array();
+    foreach ($arr as $k => $v) {
+        $keysvalue[$k] = $v[$keys];
+    }
+
+    $type == 'asc' ? asort($keysvalue) : arsort($keysvalue);
+    foreach ($keysvalue as $k => $v) {
+        $new_array[$k] = $arr[$k];
+    }
+    return $new_array;
+}
