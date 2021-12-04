@@ -21,9 +21,9 @@ class ReplyObserver
 
     public function created(Reply $reply)
     {
+        $reply->topic->updateReplyCount();
         //非命令行环境运行才执行操作
         if (! app()->runningInConsole()){
-            $reply->topic->updateReplyCount();
             $reply->topic->user->topicNotify(new TopicReplied($reply));
         }
     }
