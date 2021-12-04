@@ -1,1 +1,6 @@
-{"site_name":"\u5927\u53ef\u7231\u5e08\u5144\u7684\u6444\u5f71\u751f\u6d3b\u8bba\u575b - Powered by PhotoBBS","contact_email":"jonyho@test.io","seo_description":"\u5927\u53ef\u7231\u5e08\u5144\u7684\u6444\u5f71\u751f\u6d3b\u8bba\u575b","seo_keyword":"\u6444\u5f71,\u8bba\u575b,\u793e\u533a"}
+{
+    "site_name": "Laravel Project - Powered by LaraBBS",
+    "contact_email": "urau@example.net",
+    "seo_description": "LaraBBS",
+    "seo_keyword": "LaraBBS,\u793e\u533a,\u8bba\u575b"
+  }
