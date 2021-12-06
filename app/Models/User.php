@@ -18,7 +18,8 @@ class User extends Authenticatable implements MustVerifyEmailContract
     use HasApiTokens, HasFactory, HasRoles, MustVerifyEmailTrait, Notifiable;
     use Traits\ActiveUserHelper;
     // 开启软删除
-    use SoftDeletes;
+    //use SoftDeletes;
+
     // 设置添加的数据
     // 拒绝不添加的数据 使用create才有效
     protected $guarded = [];
