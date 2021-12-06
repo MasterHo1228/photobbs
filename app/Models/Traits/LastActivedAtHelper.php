@@ -42,6 +42,8 @@ trait LastActivedAtHelper
             // 只有当用户存在时才更新到数据库中
             if ($user = $this->find($user_id)) {
                 $user->last_actived_at = $actived_at;
+                //更新活跃时间的时候，禁止更新修改时间
+                $user->timestamps = false;
                 $user->save();
             }
         }
