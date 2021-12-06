@@ -7,6 +7,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Reply extends Model
 {
     use HasFactory;
+    // 开启软删除
+    //use SoftDeletes;
+
+    // 设置添加的数据
+    // 拒绝不添加的数据 使用create才有效
+    protected $guarded = [];
+
+    // 软删除标识字段
+    protected $dates = ['deleted_at'];
 
     protected $fillable = ['content'];
 

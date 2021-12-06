@@ -17,6 +17,7 @@ class User extends Authenticatable implements MustVerifyEmailContract
 {
     use HasApiTokens, HasFactory, HasRoles, MustVerifyEmailTrait, Notifiable;
     use Traits\ActiveUserHelper;
+    use Traits\LastActivedAtHelper;
     // 开启软删除
     //use SoftDeletes;
 
