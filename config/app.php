@@ -180,6 +180,7 @@ return [
         Mews\Captcha\CaptchaServiceProvider::class,
         Mews\Purifier\PurifierServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        Torann\GeoIP\GeoIPServiceProvider::class,
     ],
 
     /*
@@ -236,6 +237,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
         'Purifier' => Mews\Purifier\Facades\Purifier::class,
+        // 'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
 
     ],
 

@@ -39,7 +39,7 @@
             {{ $topic->reply_count }}
             ⋅
             <i class="far fa-eye"></i>
-            {{ $topic->view_count }}
+            {{ $topic->visits()->count() }}
           </div>
 
           <div class="topic-body mt-4 mb-4">
