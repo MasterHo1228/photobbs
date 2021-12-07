@@ -15,4 +15,5 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .version()
     .copyDirectory('resources/editor/js', 'public/js')
-    .copyDirectory('resources/editor/css', 'public/css');
+    .copyDirectory('resources/editor/css', 'public/css')
+    .copy('node_modules/marked/marked.min.js', 'public/js/marked.min.js');
