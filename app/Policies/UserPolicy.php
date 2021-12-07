@@ -17,4 +17,8 @@ class UserPolicy
     public function follow(User $currentUser, User $user){
         return $currentUser->id !== $user->id;
     }
+
+    public function unfollow(User $currentUser, User $user){
+        return $currentUser->id !== $user->id;
+    }
 }

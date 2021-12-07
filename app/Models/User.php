@@ -156,6 +156,13 @@ class User extends Authenticatable implements MustVerifyEmailContract
         if ( ! is_array($user_ids)) {
             $user_ids = compact('user_ids');
         }
+
+        foreach ($user_ids as $index => $user_id){
+            if ($user_id == $this->id){
+                //如果自己取关自己，直接带走
+                return;
+            }
+        }
         $this->followings()->detach($user_ids);
     }
 
