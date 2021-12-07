@@ -35,6 +35,7 @@ class User extends Authenticatable implements MustVerifyEmailContract
      */
     protected $fillable = [
         'name',
+        'nickname',
         'email',
         'password',
         'introduction',
@@ -98,6 +99,14 @@ class User extends Authenticatable implements MustVerifyEmailContract
         }
 
         $this->attributes['avatar'] = $path;
+    }
+
+    public function getNickNameAttribute($value){
+        //用户没有设置昵称的话，返回账户的用户名
+        if (empty($value)) {
+            return $this->name;
+        }
+        return $value;
     }
 
     public function topics(){

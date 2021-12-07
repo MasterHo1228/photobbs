@@ -30,7 +30,7 @@
             <img src="{{ $active_user->avatar }}" width="24px" height="24px" class="media-object">
           </div>
           <div class="media-body">
-            <small class="media-heading text-secondary">{{ $active_user->name }}</small>
+            <small class="media-heading text-secondary">{{ $active_user->nickname }}</small>
           </div>
         </a>
       @endforeach

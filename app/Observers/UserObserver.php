@@ -23,5 +23,9 @@ class UserObserver
         if (empty($user->avatar)) {
             $user->avatar = 'https://cdn.learnku.com/uploads/images/201710/30/1/TrJS40Ey5k.png';
         }
+
+        //过滤用户名中的空格和'.'
+        $user->name = str_replace(' ','',$user->name);
+        $user->name = str_replace('.','',$user->name);
     }
 }

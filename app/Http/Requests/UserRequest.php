@@ -26,6 +26,7 @@ class UserRequest extends FormRequest
     {
         return [
             'name' => 'required|between:3,25|regex:/^[A-Za-z0-9\-\_]+$/|unique:users,name,' . Auth::id(),
+            'nickname' => 'between:3,25|unique:users,nickname,',
             'email' => 'required|email',
             'introduction' => 'max:80',
             'avatar' => 'mimes:jpeg,bmp,png,gif|dimensions:min_width=208,min_height=208',
@@ -41,6 +42,8 @@ class UserRequest extends FormRequest
             'name.required' => '用户名不能为空。',
             'avatar.mimes' => '头像图片文件必须是jpeg,bmp,png,gif后缀的哦',
             'avatar.dimensions' => '图片的清晰度不够，宽和高需要 208px 以上',
+            'nickname.unique' => '昵称已被占用，请重新填写',
+            'nickname.between' => '昵称必须介于 3 - 25 个字符之间。',
         ];
     }
 }

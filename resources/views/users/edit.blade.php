@@ -22,11 +22,15 @@
 
           <div class="form-group">
             <label for="name-field">用户名</label>
-            <input class="form-control" type="text" name="name" id="name-field" value="{{ old('name', $user->name) }}" />
+            <input class="form-control" type="text" name="name" id="name-field" value="{{ old('name', $user->name) }}"  readonly />
           </div>
           <div class="form-group">
             <label for="email-field">邮 箱</label>
-            <input class="form-control" type="text" name="email" id="email-field" value="{{ old('email', $user->email) }}" />
+            <input class="form-control" type="text" name="email" id="email-field" value="{{ old('email', $user->email) }}" readonly />
+          </div>
+          <div class="form-group">
+            <label for="name-field">昵称</label>
+            <input class="form-control" type="text" name="nickname" id="name-field" value="{{ old('nickname', $user->nickname) }}" />
           </div>
           <div class="form-group">
             <label for="introduction-field">个人简介</label>
