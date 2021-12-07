@@ -60,20 +60,11 @@ class User extends Authenticatable implements MustVerifyEmailContract
         'email_verified_at' => 'datetime',
     ];
 
-    /**
-    * 访问器-头像链接字段
-    * @param string $value
-    * @return string
-    */
-    public function getAvatarAttribute($value)
-    {
-        if (empty($value)) {
-            return 'https://cdn.learnku.com/uploads/images/201709/20/1/PtDKbASVcz.png?imageView2/1/w/600/h/60';
-        }
-        return $value;
-    }
-
     public function setPasswordAttribute($value){
+        if(empty($value)){
+            return;
+        }
+
         // 如果值的长度等于 60，即认为是已经做过加密的情况
         if (strlen($value) != 60) {
             // 不等于 60，做密码加密处理
@@ -81,6 +72,20 @@ class User extends Authenticatable implements MustVerifyEmailContract
         }
 
         $this->attributes['password'] = $value;
+    }
+
+    /**
+    * 访问器-头像链接字段
+    * @param string $value
+    * @return string
+    */
+    public function getAvatarAttribute($value)
+    {
+        //用户确实没有头像的话，使用默认头像
+        if (empty($value)) {
+            return 'https://cdn.learnku.com/uploads/images/201710/30/1/TrJS40Ey5k.png';
+        }
+        return $value;
     }
 
     public function setAvatarAttribute($path)
