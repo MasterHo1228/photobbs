@@ -43,6 +43,16 @@
               Ta 的回复
             </a>
           </li>
+          {{--  <li class="nav-item">
+            <a class="nav-link bg-transparent {{ active_class(if_query('tab', 'followings')) }}" href="{{ route('users.show', [$user->id, 'tab' => 'followings']) }}">
+              Ta 的关注
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link bg-transparent {{ active_class(if_query('tab', 'followers')) }}" href="{{ route('users.show', [$user->id, 'tab' => 'followers']) }}">
+              Ta 的粉丝
+            </a>
+          </li> --}}
         </ul>
         @if (if_query('tab', 'replies'))
           @include('users._replies', ['replies' => $user->replies()->with('topic')->recent()->paginate(5)])

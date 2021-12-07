@@ -36,6 +36,9 @@ Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->na
 Route::post('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
 Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
+//Following-list
+Route::get('/users/{user}/followings', 'UsersController@followings')->name('users.followings');
+Route::get('/users/{user}/followers', 'UsersController@followers')->name('users.followers');
 
 Route::resource('topics', 'TopicsController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);
 Route::get('topics/{topic}/{slug?}', 'TopicsController@show')->name('topics.show');

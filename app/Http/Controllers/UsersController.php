@@ -39,4 +39,16 @@ class UsersController extends Controller
         $user->update($data);
         return redirect()->route('users.show', $user->id)->with('success', '个人资料更新成功！');
     }
+
+    public function followings(User $user){
+        $users = $user->followings()->paginate(30);
+        $title = $user->name . '关注的人';
+        return view('users.show_follows', compact('users', 'title'));
+    }
+
+    public function followers(User $user){
+        $users = $user->followers()->paginate(30);
+        $title = $user->name . '的粉丝';
+        return view('users.show_follows', compact('users', 'title'));
+    }
 }

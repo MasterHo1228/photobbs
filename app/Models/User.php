@@ -117,6 +117,40 @@ class User extends Authenticatable implements MustVerifyEmailContract
         return $this->hasMany(Reply::class);
     }
 
+    //粉丝关系
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'followers', 'user_id', 'follower_id')->withTimestamps();
+    }
+
+    //关注名单
+    public function followings()
+    {
+        return $this->belongsToMany(User::class, 'followers', 'follower_id', 'user_id')->withTimestamps();
+    }
+
+    public function isFollowing($user_id)
+    {
+        return $this->followings->contains($user_id);
+    }
+
+    //关注动作
+    public function follow($user_ids){
+        if ( ! is_array($user_ids)) {
+            $user_ids = compact('user_ids');
+        }
+        $this->followings()->sync($user_ids, false);
+    }
+
+    //取消关注动作
+    public function unfollow($user_ids)
+    {
+        if ( ! is_array($user_ids)) {
+            $user_ids = compact('user_ids');
+        }
+        $this->followings()->detach($user_ids);
+    }
+
     public function isAuthorOf($model){
         return $this->id == $model->user_id;
     }
