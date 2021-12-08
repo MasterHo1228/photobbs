@@ -41,14 +41,14 @@ class UsersController extends Controller
     }
 
     public function followings(User $user){
-        $users = $user->followings()->paginate(30);
+        $users = $user->followings();
         $title = $user->name . '关注的人';
-        return view('users.show_follows', compact('users', 'title'));
+        return view('users.show', compact('users','title'));
     }
 
     public function followers(User $user){
-        $users = $user->followers()->paginate(30);
+        $users = $user->followers();
         $title = $user->name . '的粉丝';
-        return view('users.show_follows', compact('users', 'title'));
+        return view('users.show', compact('users','title'));
     }
 }
