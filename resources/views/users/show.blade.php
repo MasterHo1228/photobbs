@@ -19,6 +19,25 @@
             <h5><strong>最后活跃</strong></h5>
             <p title="{{  $user->last_actived_at }}">{{ $user->last_actived_at->diffForHumans() }}</p>
             <hr>
+            <a href="#">
+              <strong id="following" class="user-stats">
+                {{ count($user->followings) }}
+              </strong>
+              关注
+            </a>
+            <a href="#">
+              <strong id="followers" class="user-stats">
+                {{ count($user->followers) }}
+              </strong>
+              粉丝
+            </a>
+            <a href="#">
+              <strong id="topics" class="user-stats">
+                {{ $user->topics()->count() }}
+              </strong>
+              文章
+            </a>
+            <hr>
             <p>
               @include('users._follow_form')
             </p>
@@ -47,16 +66,6 @@
               Ta 的回复
             </a>
           </li>
-          {{--  <li class="nav-item">
-            <a class="nav-link bg-transparent {{ active_class(if_query('tab', 'followings')) }}" href="{{ route('users.show', [$user->id, 'tab' => 'followings']) }}">
-              Ta 的关注
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link bg-transparent {{ active_class(if_query('tab', 'followers')) }}" href="{{ route('users.show', [$user->id, 'tab' => 'followers']) }}">
-              Ta 的粉丝
-            </a>
-          </li> --}}
         </ul>
         @if (if_query('tab', 'replies'))
           @include('users._replies', ['replies' => $user->replies()->with('topic')->recent()->paginate(5)])
