@@ -52,3 +52,7 @@ Route::resource('replies', 'RepliesController', ['only' => ['store','destroy']])
 Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);
 
 Route::get('permission-denied', 'PagesController@permissionDenied')->name('permission-denied');
+
+//follow & unfollow
+Route::post('/users/followers/{user}', 'FollowersController@store')->name('followers.store');
+Route::delete('/users/followers/{user}', 'FollowersController@destroy')->name('followers.destroy');
