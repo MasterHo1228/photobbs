@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\UserNotifyHelper;
 use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -15,9 +16,14 @@ use Illuminate\Support\Str;
 
 class User extends Authenticatable implements MustVerifyEmailContract
 {
-    use HasApiTokens, HasFactory, HasRoles, MustVerifyEmailTrait, Notifiable;
+    use HasApiTokens, HasFactory, HasRoles, MustVerifyEmailTrait;
+    use Notifiable {
+        notify as protected laravelNotify;
+    }
+
     use Traits\ActiveUserHelper;
     use Traits\LastActivedAtHelper;
+    use Traits\UserNotifyHelper;
     // 开启软删除
     //use SoftDeletes;
 
@@ -168,20 +174,6 @@ class User extends Authenticatable implements MustVerifyEmailContract
 
     public function isAuthorOf($model){
         return $this->id == $model->user_id;
-    }
-
-    public function topicNotify($instance)
-    {
-        // 如果要通知的人是当前用户，就不必通知了！
-        if ($this->id == Auth::id()) {
-            return;
-        }
-
-        if (method_exists($instance, 'toDatabase')) {
-            $this->increment('notification_count');
-        }
-
-        $this->notify($instance);
     }
 
     public function markAsRead(){
