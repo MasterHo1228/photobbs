@@ -26,4 +26,10 @@ class Reply extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function mentionedUsers()
+    {
+        preg_match_all('/@([\w\-]+)/', $this->content, $matches);
+        return $matches[1];
+    }
 }

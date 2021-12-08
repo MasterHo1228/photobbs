@@ -3,7 +3,10 @@
 namespace App\Observers;
 
 use App\Models\Reply;
+use App\Models\User;
 use App\Notifications\TopicReplied;
+use App\Notifications\UserMentioned;
+use Illuminate\Support\Facades\DB;
 
 // creating, created, updating, updated, saving,
 // saved,  deleting, deleted, restoring, restored
@@ -26,6 +29,13 @@ class ReplyObserver
         if (! app()->runningInConsole()){
             $reply->topic->user->topicNotify(new TopicReplied($reply));
         }
+
+        // 通知被提及用户
+        User::whereIn('name', $reply->mentionedUsers())
+            ->get()
+            ->each(function ($user) use ($reply) {
+                $user->notify(new UserMentioned($reply));
+            });
     }
 
     public function deleted(Reply $reply){
