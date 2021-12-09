@@ -181,6 +181,7 @@ return [
         Mews\Purifier\PurifierServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Torann\GeoIP\GeoIPServiceProvider::class,
+        Overtrue\LaravelFollow\FollowServiceProvider::class,
     ],
 
     /*

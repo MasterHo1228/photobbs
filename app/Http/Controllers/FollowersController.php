@@ -17,8 +17,8 @@ class FollowersController extends Controller
     {
         $this->authorize('follow', $user);
 
-        if ( ! Auth::user()->isFollowing($user->id)) {
-            Auth::user()->follow($user->id);
+        if ( ! Auth::user()->isFollowing($user)) {
+            Auth::user()->follow($user);
         }
 
         return redirect()->route('users.show', $user->id)->with('success', '已成功关注该用户！');
@@ -28,8 +28,8 @@ class FollowersController extends Controller
     {
         $this->authorize('follow', $user);
 
-        if (Auth::user()->isFollowing($user->id)) {
-            Auth::user()->unfollow($user->id);
+        if (Auth::user()->isFollowing($user)) {
+            Auth::user()->unfollow($user);
         }
 
         return redirect()->route('users.show', $user->id)->with('danger', '已取消关注该用户！');

@@ -41,12 +41,12 @@ class UsersController extends Controller
     }
 
     public function followings(User $user){
-        $users = $user->followings();
+        $users = $user->followings;
         return view('users.show', compact('users'));
     }
 
     public function followers(User $user){
-        $users = $user->followers();
+        $users = $user->followers;
         return view('users.show', compact('users'));
     }
 }
