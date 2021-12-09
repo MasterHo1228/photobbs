@@ -66,10 +66,7 @@
   <script type="text/javascript" src="{{ asset('js/module.min.js') }}"></script>
   <script type="text/javascript" src="{{ asset('js/hotkeys.min.js') }}"></script>
   <script type="text/javascript" src="{{ asset('js/uploader.min.js') }}"></script>
-  <script type="text/javascript" src="{{ asset('js/marked.min.js') }}"></script>
-  <script type="text/javascript" src="{{ asset('js/to-markdown.js') }}"></script>
   <script type="text/javascript" src="{{ asset('js/simditor.min.js') }}"></script>
-  <script type="text/javascript" src="{{ asset('js/simditor-markdown.js') }}"></script>
 
   <script>
     $(document).ready(function() {
@@ -78,7 +75,7 @@
         toolbar: ['bold', 'fontScale', 'italic', 'underline', 'strikethrough', 'color', '|',
                      'ol', 'ul', 'hr', '|',
                      'blockquote', 'code', '|',
-                     'image', 'markdown', 'alignment'],
+                     'image', 'alignment'],
         upload:{
           url: '{{ route('topics.upload_image') }}',
           params: {
