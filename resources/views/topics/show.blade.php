@@ -22,7 +22,7 @@
             </div>
           </div>
           <hr>
-          @include('users._sms_info')
+          @include('users._sms_info', ['user' => $topic->user])
         </div>
       </div>
     </div>

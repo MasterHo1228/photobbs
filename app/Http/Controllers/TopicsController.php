@@ -39,9 +39,8 @@ class TopicsController extends Controller
         }
 
         $topic->visits()->increment();
-        $user = $topic->user;
 
-        return view('topics.show', compact('topic','user'));
+        return view('topics.show', compact('topic'));
     }
 
 	public function create(Topic $topic)
