@@ -21,6 +21,8 @@
               </a>
             </div>
           </div>
+          <hr>
+          @include('users._sms_info')
         </div>
       </div>
     </div>

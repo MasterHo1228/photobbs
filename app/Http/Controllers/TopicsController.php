@@ -33,19 +33,15 @@ class TopicsController extends Controller
 
     public function show(Request $request,Topic $topic)
     {
-        /*每当有人点开话题观看的时候，话题浏览量+1
-        $topic->view_count += 1;
-        $topic->save();
-        */
-
         // URL 矫正
         if ( ! empty($topic->slug) && $topic->slug != $request->slug) {
             return redirect($topic->link(), 301);
         }
 
         $topic->visits()->increment();
+        $user = $topic->user;
 
-        return view('topics.show', compact('topic'));
+        return view('topics.show', compact('topic','user'));
     }
 
 	public function create(Topic $topic)
