@@ -81,6 +81,7 @@ class Kernel extends HttpKernel
             // 请见：https://learnku.com/docs/laravel/8.x/middleware#为路由分配中间件
 
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+            \App\Http\Middleware\AcceptHeader::class,
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
