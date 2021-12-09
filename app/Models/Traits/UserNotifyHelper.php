@@ -8,7 +8,7 @@ trait UserNotifyHelper
     public function topicNotify($instance)
     {
         // 如果要通知的人是当前用户，就不必通知了！
-        if ($this->id == Auth::id()) {
+        if ($this->isCurrentUser(Auth::id())) {
             return;
         }
 
@@ -17,5 +17,10 @@ trait UserNotifyHelper
         }
 
         $this->laravelNotify($instance);
+    }
+
+    //判断是否为当前用户
+    protected function isCurrentUser($user_id){
+        return $this->id == $user_id;
     }
 }
