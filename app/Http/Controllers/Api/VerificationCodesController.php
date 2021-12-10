@@ -12,14 +12,14 @@ class VerificationCodesController extends Controller
 {
     public function store(VerificationCodeRequest $request)
     {
-        $captchaData = Cache::get($request->captcha_key);
+        $captchaData = Cache::get($request->cache_key);
         if (!$captchaData) {
             abort(403, '图片验证码已失效');
         }
 
-        if (!hash_equals($captchaData['code'], strtolower($request->captcha_code))) {
-            // 验证错误就清除缓存
-            Cache::forget($request->captcha_key);
+        if(!captcha_api_check($request->captcha_code, $captchaData['captcha']))
+        {
+            Cache::forget($request->cache_key);
             throw new AuthenticationException('验证码错误');
         }
 

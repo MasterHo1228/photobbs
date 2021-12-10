@@ -5,24 +5,28 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Http\Request;
-use Gregwar\Captcha\CaptchaBuilder;
+use Mews\Captcha\Captcha;
 use App\Http\Requests\Api\CaptchaRequest;
 
 class CaptchasController extends Controller
 {
-    public function store(CaptchaRequest $request, CaptchaBuilder $captchaBuilder)
+    public function store(CaptchaRequest $request, Captcha $captchaBuilder)
     {
-        $key = 'captcha-'.Str::random(15);
+        $key = 'cacheKey-'.Str::random(15);
         $phone = $request->phone;
 
-        $captcha = $captchaBuilder->build();
-        $expiredAt = now()->addMinutes(2);
-        Cache::put($key, ['phone' => $phone, 'code' => strtolower($captcha->getPhrase())], $expiredAt);
+        $captcha = $captchaBuilder->create('flat', true);
+        $expiredAt = now()->addMinutes(5);
+        Cache::put($key, [
+            'phone' => $phone,
+            'captcha' => $captcha['key']
+        ], $expiredAt);
 
         $result = [
-            'captcha_key' => $key,
+            'cache_key' => $key,
             'expired_at' => $expiredAt->toDateTimeString(),
-            'captcha_image_content' => $captcha->inline()
+            'captcha_key' => $captcha['key'],
+            'captcha_img' => $captcha['img']
         ];
 
         return response()->json($result)->setStatusCode(201);
