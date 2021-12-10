@@ -10,7 +10,8 @@ class VerificationCodeRequest extends FormRequest
     public function attributes()
     {
         return [
-            'phone' => '手机号码'
+            'captcha_key' => 'required|string',
+            'captcha_code' => 'required|string',
         ];
     }
 
@@ -22,7 +23,8 @@ class VerificationCodeRequest extends FormRequest
     public function rules()
     {
         return [
-            'phone' => 'required|phone:CN,mobile|unique:users',
+            'captcha_key' => 'required|string',
+            'captcha_code' => 'required|string',
         ];
     }
 }
