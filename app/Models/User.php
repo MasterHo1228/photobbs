@@ -14,8 +14,9 @@ use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Str;
 use Overtrue\LaravelFollow\Followable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable implements MustVerifyEmailContract
+class User extends Authenticatable implements MustVerifyEmailContract, JWTSubject
 {
     use HasApiTokens, HasFactory, HasRoles, MustVerifyEmailTrait;
     use Notifiable {
@@ -71,6 +72,16 @@ class User extends Authenticatable implements MustVerifyEmailContract
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 
     public function setPasswordAttribute($value){
         if(empty($value)){

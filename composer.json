@@ -27,7 +27,8 @@
         "spatie/laravel-referer": "^1.7",
         "summerblue/administrator": "8.*",
         "summerblue/laravel-active": "8.*",
-        "torann/geoip": "^3.0"
+        "torann/geoip": "^3.0",
+        "tymon/jwt-auth": "~1.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

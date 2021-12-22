@@ -42,6 +42,15 @@ Route::prefix('v1')
         // 第三方登录
         Route::post('socials/{social_type}/authorizations', 'AuthorizationsController@socialStore')
             ->where('social_type', 'wechat')->name('socials.authorizations.store');
+        // 登录
+        Route::post('authorizations', 'AuthorizationsController@store')
+            ->name('authorizations.store');
+        // 刷新token
+        Route::put('authorizations/current', 'AuthorizationsController@update')
+            ->name('authorizations.update');
+        // 删除token
+        Route::delete('authorizations/current', 'AuthorizationsController@destroy')
+            ->name('authorizations.destroy');
 });
 
 Route::prefix('v2')->name('api.v2.')->group(function() {
