@@ -39,19 +39,25 @@ Route::prefix('v1')
         Route::middleware('throttle:' . config('api.rate_limits.access'))
             ->group(function () {
                 // 游客可以访问的接口
-                // 某个用户的详情
+                // 指定用户的详情
                 Route::get('users/{user}', 'UsersController@show')
                     ->name('users.show');
                 // 话题列表，详情
                 Route::resource('topics', 'TopicsController')->only([
                     'index', 'show'
                 ]);
-                // 某个用户发布的话题
+                // 指定用户发布的话题
                 Route::get('users/{user}/topics', 'TopicsController@userIndex')
                     ->name('users.topics.index');
                 // 分类列表
                 Route::get('categories', 'CategoriesController@index')
                     ->name('categories.index');
+                // 话题评论列表
+                Route::get('topics/{topic}/replies', 'RepliesController@index')
+                    ->name('topics.replies.index');
+                // 指定用户的评论列表
+                Route::get('users/{user}/replies', 'RepliesController@userIndex')
+                    ->name('users.replies.index');
 
                 // 登录后可以访问的接口
                 Route::middleware('auth:api')->group(function() {
@@ -70,10 +76,10 @@ Route::prefix('v1')
                         'store', 'update', 'destroy'
                     ]);
 
-                    // 发布回复
+                    // 发布评论
                     Route::post('topics/{topic}/replies', 'RepliesController@store')
                         ->name('topics.replies.store');
-                    // 删除回复
+                    // 删除评论
                     Route::delete('topics/{topic}/replies/{reply}', 'RepliesController@destroy')
                      ->name('topics.replies.destroy');
                 });

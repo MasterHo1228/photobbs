@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Queries\ReplyQuery;
 use Illuminate\Http\Request;
 use App\Models\Topic;
 use App\Models\Reply;
@@ -30,5 +31,19 @@ class RepliesController extends Controller
         $reply->delete();
 
         return response(null, 204);
+    }
+
+    public function index($topic_id, ReplyQuery $query)
+    {
+        $replies = $query->where('topic_id',$topic_id)->paginate();
+
+        return ReplyResource::collection($replies);
+    }
+
+    public function userIndex($user_id, ReplyQuery $query)
+    {
+        $replies = $query->where('user_id',$user_id)->paginate();
+
+        return ReplyResource::collection($replies);
     }
 }
