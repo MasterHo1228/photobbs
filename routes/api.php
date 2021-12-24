@@ -20,6 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::prefix('v1')
     ->namespace('Api')
+    ->middleware('change-locale')
     ->name('api.v1.')
     ->group(function() {
         // 短信验证码
