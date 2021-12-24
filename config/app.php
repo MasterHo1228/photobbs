@@ -182,6 +182,7 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         Torann\GeoIP\GeoIPServiceProvider::class,
         Overtrue\LaravelFollow\FollowServiceProvider::class,
+        App\Providers\JpushServiceProvider::class,
     ],
 
     /*
