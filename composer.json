@@ -12,6 +12,7 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "intervention/image": "^2.7",
         "jpush/jpush": "^3.6",
+        "kslimani/laravel-passport-grant": "^1.1",
         "laravel/framework": "^8.65",
         "laravel/horizon": "^5.7",
         "laravel/passport": "^10.2",
