@@ -68,6 +68,14 @@ Route::prefix('v1')
                 Route::get('actived/users', 'UsersController@activedIndex')
                     ->name('actived.users.index');
 
+                // 小程序登录
+                Route::post('weapp/authorizations', 'AuthorizationsController@weappStore')
+                    ->name('weapp.authorizations.store');
+                // 小程序注册
+                Route::post('weapp/users', 'UsersController@weappStore')
+                    ->name('weapp.users.store');
+
+
                 // 登录后可以访问的接口
                 Route::middleware('auth:api')->group(function() {
                     // 当前登录用户信息
@@ -118,9 +126,6 @@ Route::prefix('v1')
         // 登录
         Route::post('authorizations', 'AuthorizationsController@store')
             ->name('authorizations.store');
-        // 小程序登录
-        Route::post('weapp/authorizations', 'AuthorizationsController@weappStore')
-            ->name('weapp.authorizations.store');
         // 刷新token
         Route::put('authorizations/current', 'AuthorizationsController@update')
             ->name('authorizations.update');
