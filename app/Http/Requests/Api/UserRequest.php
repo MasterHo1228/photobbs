@@ -17,9 +17,10 @@ class UserRequest extends FormRequest
                     'verification_code' => 'required|string',
                 ];
             break;
-            case 'PATCH':
-                $userId = auth('api')->id();
 
+            case 'PATCH':
+            case 'PUT':
+                $userId = auth('api')->id();
                 return [
                     'name' => 'between:3,25|regex:/^[A-Za-z0-9\-\_]+$/|unique:users,name,' .$userId,
                     'email'=>'email|unique:users,email,'.$userId,
