@@ -10,7 +10,7 @@ class VerificationCodeRequest extends FormRequest
     public function attributes()
     {
         return [
-            'cache_key' => '验证码Key',
+            'cache_key' => '验证码cacheKey',
             'captcha_code' => '图片验证码',
         ];
     }

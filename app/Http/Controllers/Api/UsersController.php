@@ -9,7 +9,6 @@ use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Auth\AuthenticationException;
 use App\Models\Image;
-use EasyWeChat;
 
 class UsersController extends Controller
 {
@@ -53,7 +52,7 @@ class UsersController extends Controller
         }
 
         // 获取微信的 openid 和 session_key
-        $miniProgram = EasyWeChat::miniProgram();
+        $miniProgram = \EasyWeChat::miniProgram();
         $data = $miniProgram->auth->session($request->code);
 
         if (isset($data['errcode'])) {
