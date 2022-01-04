@@ -24,7 +24,7 @@ class ImagesController extends Controller
         $image->user_id = $user->id;
         $image->save();
 
-        //如果检测到上传的是用户头像，同步更新对应用户的头像
+        //如果检测到上传的是用户头像，同步更新对应用户的头像链接
         if ($request->type == 'avatar'){
             $defineUser = User::find($user->id);
             $defineUser->avatar = $image->path;
