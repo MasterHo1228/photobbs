@@ -34,7 +34,7 @@ class Topic extends Model
 
     public function topReplies()
     {
-        return $this->replies()->limit(5);
+        return $this->replies()->orderBy('created_at','desc')->limit(5);
     }
 
     public function scopeWithOrder($query, $order)
