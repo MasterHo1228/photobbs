@@ -29,6 +29,7 @@ class TopicReplied extends Notification implements ShouldQueue
 
         //预留极光推送渠道
         //return [JPushChannel::class];
+
         return ['database', 'mail'];
     }
 
