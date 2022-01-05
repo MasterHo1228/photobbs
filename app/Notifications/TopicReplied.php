@@ -26,7 +26,10 @@ class TopicReplied extends Notification implements ShouldQueue
     public function via($notifiable)
     {
         // 开启通知的频道
-        return ['database', 'mail', JPushChannel::class];
+
+        //预留极光推送渠道
+        //return [JPushChannel::class];
+        return ['database', 'mail'];
     }
 
     public function toDatabase($notifiable){

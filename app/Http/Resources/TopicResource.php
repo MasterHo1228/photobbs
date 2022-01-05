@@ -24,6 +24,7 @@ class TopicResource extends JsonResource
             'updated_at' => (string) $this->updated_at,
             'category' => new CategoryResource($this->whenLoaded('category')),
             'user' => new UserResource($this->whenLoaded('user')),
+            'top_replies' => ReplyResource::collection($this->whenLoaded('topReplies')),
         ];
     }
 }
