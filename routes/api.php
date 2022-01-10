@@ -111,7 +111,8 @@ Route::prefix('v1')
                     // 标记消息通知为已读
                     Route::patch('user/read/notifications', 'NotificationsController@read')
                         ->name('user.notifications.read');
-
+                    Route::put('user/read/notifications', 'NotificationsController@read')
+                        ->name('user.notifications.read.put');
 
                     // 当前登录用户权限
                     Route::get('user/permissions', 'PermissionsController@index')
