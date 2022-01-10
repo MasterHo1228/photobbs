@@ -42,7 +42,7 @@ class RepliesController extends Controller
 
     public function userIndex($user_id, ReplyQuery $query)
     {
-        $replies = $query->where('user_id',$user_id)->paginate();
+        $replies = $query->where('user_id',$user_id)->orderBy('created_at','desc')->paginate();
 
         return ReplyResource::collection($replies);
     }
