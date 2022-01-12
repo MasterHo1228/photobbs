@@ -43,6 +43,8 @@ html {
     height: 60px;
     background-color: #000;
 
+    font-size: 10px;
+
     .container {
       padding-right: 15px;
       padding-left: 15px;
@@ -54,6 +56,10 @@ html {
         a {
           color: inherit;
         }
+      }
+
+      .site-record {
+        margin-left: 20px;
       }
     }
   }
